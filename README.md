@@ -1,9 +1,8 @@
 # Desafio Técnico SAJADV
-Utlizado Java EE e React para o frontend!
+Utlizado Java EE com servidor de aplicação Payara Micro e React para o frontend!
 
 Utlizado docker para criação do ambiente de forma completa.
 Utilizado o traefik para balanceamento de carga.
-
 
 Para executar o projeto, basta apenas seguir os passos:
 
