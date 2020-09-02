@@ -271,7 +271,7 @@ export default class AuditoriaScreen extends React.Component {
                     this.handleCloseConfirmationModal();
                 });
         } else {
-            URL = `http://softplan.localhost/sajadv/v1/pessoas`
+            // URL = `http://softplan.localhost/sajadv/v1/pessoas`
             // URL = `http://localhost:8080/sajadv/v1/pessoas`
 
             var patternData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
