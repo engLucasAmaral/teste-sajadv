@@ -14,7 +14,7 @@ const routes = [
 
 function App() {
   return (
-    <Router basename="admin">
+    <Router >
       <div className='App'>
         <Switch >
           {routes.map((route) => (
