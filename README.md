@@ -13,7 +13,7 @@ Para executar o projeto, basta apenas seguir os passos:
   Na raiz, executar: docker-compose up
 
 Com apenas esses dois comandos, será gerado a versão da api-java, frontend, criação do banco de dados (mariadb).
-O Projeto java só é iniciado após o banco de dados estár pronto e conectável.
+O Projeto java só é iniciado após o banco de dados estar pronto e conectável.
 
 # Para utilizar a aplicação web, basta acessar:
   http://softplan.localhost/gestao/
@@ -23,4 +23,4 @@ O Projeto java só é iniciado após o banco de dados estár pronto e conectáve
 
 Caso queira trocar a URL, pode alterar no docker-compose.yml:
   traefik.frontend.rule=Host: URL_DOMINIO
-e alterar a variável do projeto web URL_BASE_AMBIENTE no arquivo "base.js". para o mesmo poder enchergar a nova URL.
+e alterar a variável do projeto web URL_BASE_AMBIENTE no arquivo "base.js". para o mesmo poder se comunicar com a nova URL.
