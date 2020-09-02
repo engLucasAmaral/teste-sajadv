@@ -55,6 +55,7 @@ public class Pessoa implements Serializable {
 //    @JsonIgnore
     @Column(name = "data_cadastro", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
+    @XmlJavaTypeAdapter(DateTimeAdapter.class)
     private Date dataCadastro = new Date();
 
     @JsonIgnore

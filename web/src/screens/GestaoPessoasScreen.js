@@ -407,6 +407,11 @@ export default class AuditoriaScreen extends React.Component {
                 name: 'Nascimento',
                 selector: 'nascimento',
             },
+            ,
+            {
+                name: 'Data de Cadastro',
+                selector: 'dataCadastro',
+            },
             {
                 selector: 'edit',
                 cell: row => <Button outlined='#116D3A' title={<PencilIcon />} click={() => this.handleOpenConfirmationModal(row, 1)} />,
