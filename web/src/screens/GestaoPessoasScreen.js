@@ -311,6 +311,7 @@ export default class AuditoriaScreen extends React.Component {
                         }
                     });
             } else {
+                var URL = `${URL_BASE_AMBIENTE}`
                 axios.post(URL, dados)
                     .then(res => {
                         var message = res.data.messages[0];
