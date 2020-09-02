@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     @NamedQuery(name = "Pessoa.findAll",
             query = "SELECT t FROM Pessoa t where t.ativo = true"),
     @NamedQuery(name = "Pessoa.buscarPorCPF",
-            query = "SELECT t FROM Pessoa t where t.cpf = :p0")})
+            query = "SELECT t FROM Pessoa t where t.cpf = :p0 and t.ativo = true")})
 
 public class Pessoa implements Serializable {
 
@@ -38,7 +38,7 @@ public class Pessoa implements Serializable {
     @Column(name = "nome", nullable = false, length = 150)
     private String nome;
 
-    @Column(name = "cpf", nullable = false, unique = true)
+    @Column(name = "cpf", nullable = false/*, unique = true*/)
     private String cpf;
 
     @Column(name = "nascimento", nullable = false)
@@ -51,6 +51,11 @@ public class Pessoa implements Serializable {
 
     @Column(name = "image", nullable = true)
     private byte[] image;
+
+//    @JsonIgnore
+    @Column(name = "data_cadastro", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataCadastro = new Date();
 
     @JsonIgnore
     @Column(name = "ativo", nullable = false)
@@ -109,6 +114,14 @@ public class Pessoa implements Serializable {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public boolean isAtivo() {

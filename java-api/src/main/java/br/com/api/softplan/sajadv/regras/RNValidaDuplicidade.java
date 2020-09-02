@@ -26,7 +26,7 @@ public class RNValidaDuplicidade {
         log.debug("Verificando CPF");
         Pessoa p = service.buscarPorCPF(pessoa.getCpf());
         if (pessoa.getCpf() != null && p != null && !Objects.equals(p.getId(), pessoa.getId())) {
-            throw new APIException(30, "CPF ja cadastrado!");
+            throw new APIException(30, "CPF ja cadastrado! ");
 
         }
     }

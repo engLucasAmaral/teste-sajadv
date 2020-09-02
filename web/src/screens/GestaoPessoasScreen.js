@@ -279,17 +279,15 @@ export default class AuditoriaScreen extends React.Component {
                 alert("Digite a data no formato Dia/Mês/Ano");
                 return false;
             }
-
-            var dados = {
-                id: this.state.id,
-                nome: this.state.nome,
-                cpf: this.state.cpf,
-                email: this.state.email,
-                nascimento: this.state.nascimento
-            };
             //EDITAR
             if (this.state.opcao == 1) {
-                axios.put(URL, dados)
+                axios.put(URL, {
+                    id: this.state.id,
+                    nome: this.state.nome,
+                    cpf: this.state.cpf,
+                    email: this.state.email,
+                    nascimento: this.state.nascimento
+                })
                     .then(res => {
                         var message = res.data.messages[0];
                         this.setState({
@@ -312,7 +310,13 @@ export default class AuditoriaScreen extends React.Component {
                     });
             } else {
                 var URL = `${URL_BASE_AMBIENTE}`
-                axios.post(URL, dados)
+                axios.post(URL, {
+
+                    nome: this.state.nome,
+                    cpf: this.state.cpf,
+                    email: this.state.email,
+                    nascimento: this.state.nascimento
+                })
                     .then(res => {
                         var message = res.data.messages[0];
                         this.setState({
