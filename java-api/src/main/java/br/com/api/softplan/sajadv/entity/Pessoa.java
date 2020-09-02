@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     @NamedQuery(name = "Pessoa.findAll",
             query = "SELECT t FROM Pessoa t where t.ativo = true"),
     @NamedQuery(name = "Pessoa.buscarPorCPF",
-            query = "SELECT t FROM Pessoa t where t.ativo = true AND t.cpf = :p0")})
+            query = "SELECT t FROM Pessoa t where t.cpf = :p0")})
 
 public class Pessoa implements Serializable {
 
