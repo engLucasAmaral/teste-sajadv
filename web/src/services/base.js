@@ -1,0 +1,1 @@
+export const URL_BASE_AMBIENTE = 'http://softplan.localhost/sajadv/v1/pessoas'

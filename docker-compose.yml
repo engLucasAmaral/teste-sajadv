@@ -1,0 +1,55 @@
+version: "3.6"
+services:
+  reverse-proxy:
+    image: traefik:v1.7
+    restart: always
+    command: --api --docker  --docker.watch --logLevel=INFO
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "80:80"    
+      - "25000:8080"
+      - "8081:8081" 
+      - "443:443" 
+    container_name: "traefik"
+    labels: 
+      - traefik.frontend.rule=Host:traefik.localhost
+      - traefik.port=25000
+
+  database:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=softplan
+      - MARIADB_EXTRA_FLAGS=--max-connect-errors=1000 --max_connections=10000
+    command: --max-connections=10000 --connect-timeout=10  --query-cache-limit=4M --query-cache-size=64M --expire-logs-days=10  --bulk-insert-buffer-size=16M --tmp-table-size=256M
+                 --max-heap-table-size=2048M
+    labels:
+      - "traefik.backend=database"
+      - "traefik.port=3306"
+  sajadv-api:
+    build: ./java-api
+    image: sajadv-api:1.0.0
+    environment:
+      app_name: sajadv
+      TZ: America/Sao_Paulo
+    restart: on-failure
+    depends_on: 
+      - database
+    links:
+      - database
+    entrypoint: ./wait-for-it.sh database:3306 -s -t 5 -- java -jar /app/payara-micro-5.2020.2.jar --addJars mariadb-java-client-2.4.1.jar --deploy /app/app.war:sajadv
+    labels:
+      - "traefik.backend=sajadv-api"
+      - "traefik.frontend.rule=Host:softplan.localhost;PathPrefix:sajadv,sajadv/v1,/sajadv/swagger/,/sajadv"
+      - "traefik.port=8080"
+      - "traefik.frontend.entryPoints=http"
+  web:
+    image: desafio-web:1.0.0
+    build:
+      context: ./web
+    labels:
+      - "traefik.backend=sajadv-web"
+      - "traefik.frontend.rule=Host:softplan.localhost;PathPrefix:gestao,gestao/,/gestao"
+      - "traefik.port=80"
+      - "traefik.frontend.entryPoints=http"
