@@ -273,7 +273,7 @@ export default class AuditoriaScreen extends React.Component {
         } else {
             // URL = `http://softplan.localhost/sajadv/v1/pessoas`
             // URL = `http://localhost:8080/sajadv/v1/pessoas`
-
+            var URL = `${URL_BASE_AMBIENTE}`;
             var patternData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
             if (!patternData.test(this.state.nascimento)) {
                 alert("Digite a data no formato Dia/Mês/Ano");
