@@ -24,7 +24,7 @@
     "react-select": "^3.0.8",
     "react-tabs": "^3.1.0",
     "styled-components": "^5.0.1",
-    "styled-icons": "^9.4.0",
+    "styled-icons": "^9.5.0",
     "yarn": "^1.22.1"
   },
   "scripts": {
