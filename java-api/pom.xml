@@ -80,7 +80,7 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-jaxrs</artifactId>
-            <version>1.6.2</version>
+            <version>1.6.5</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -242,8 +242,8 @@
                                 </goals>
                                 <configuration>
                                     <tasks>
-                                        <delete file="src/main/webapp/WEB-INF/glassfish-resources.xml" />
-                                        <copy file="src/main/resources/glassfish-resources-local.xml" tofile="src/main/webapp/WEB-INF/glassfish-resources.xml" />
+                                        <delete file="src/main/webapp/WEB-INF/glassfish-resources.xml"/>
+                                        <copy file="src/main/resources/glassfish-resources-local.xml" tofile="src/main/webapp/WEB-INF/glassfish-resources.xml"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -275,8 +275,8 @@
                                 </goals>
                                 <configuration>
                                     <tasks>
-                                        <delete file="src/main/webapp/WEB-INF/glassfish-resources.xml" />
-                                        <copy file="src/main/resources/glassfish-resources-docker.xml" tofile="src/main/webapp/WEB-INF/glassfish-resources.xml" />
+                                        <delete file="src/main/webapp/WEB-INF/glassfish-resources.xml"/>
+                                        <copy file="src/main/resources/glassfish-resources-docker.xml" tofile="src/main/webapp/WEB-INF/glassfish-resources.xml"/>
                                     </tasks>
                                 </configuration>
                             </execution>
